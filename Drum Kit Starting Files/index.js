@@ -1,3 +1,4 @@
+
 var drumLength = document.querySelectorAll(".drum").length;
 
 for (var i = 0; i < drumLength; i++) {
@@ -8,7 +9,8 @@ function clickHandle() {
     var btnInnerHtml = this.innerHTML;
 
     makeSound(btnInnerHtml);
-    
+    buttonAnimation(btnInnerHtml);
+
 }
 
 document.addEventListener("keydown", keypress);
@@ -16,6 +18,8 @@ document.addEventListener("keydown", keypress);
 function keypress(event){
 
     makeSound(event.key);
+    buttonAnimation(event.key);
+
 }
 
 function makeSound(key){
@@ -60,4 +64,16 @@ function makeSound(key){
             console.log("Invalid key");
             break;
     }
+}
+
+function buttonAnimation(currentKey){
+
+   var activeBtn =  document.querySelector("." + currentKey)
+
+   activeBtn.classList.add("pressed");
+
+   setTimeout(function(){
+
+    activeBtn.classList.remove("pressed");
+   }, 100)
 }
