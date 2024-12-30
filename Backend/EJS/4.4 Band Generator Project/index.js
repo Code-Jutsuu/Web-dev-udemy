@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
-app.post("/submit", (req, res) => {
+
   //Step 2 - Make the generate name functionality work
   //Hint: When the "Generate Name" button in index.ejs is clicked, it should hit up this route.
   //Then:
@@ -28,14 +28,14 @@ app.post("/submit", (req, res) => {
   //scroll down to see the two arrays.
   //2. Send the index.ejs as a response and add the adjective and noun to the res.render
   //3. Test to make sure that the random words display in the h1 element in index.ejs
-  const randomAdj = adj[Math.floor(Math.random() * adj.lenth)];
-  const randomNoun = noun[Math.floor(Math.random() * noun.lenth)];
-  res.render("index.ejs", {
-    adjective: randomAdj,
-    noun: randomNoun,
-  })
-});
-
+  app.post("/submit", (req, res) => {
+    const randomAdj = adj[Math.floor(Math.random() * adj.length)];
+    const randomNoun = noun[Math.floor(Math.random() * noun.length)];
+    res.render("solution.ejs", {
+      adjective: randomAdj,
+      noun: randomNoun,
+    });
+  });
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
